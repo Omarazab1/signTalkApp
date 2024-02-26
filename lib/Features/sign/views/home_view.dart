@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:sign_talk_app/Features/widgets/custom-drawer.dart';
+import 'package:sign_talk_app/Features/widgets/data-item-listview.dart';
+import 'package:sign_talk_app/Features/widgets/method-item-listview.dart';
+import 'package:sign_talk_app/core/utils/assets.dart';
+
+class HomeView extends  StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  GlobalKey <ScaffoldState> scaffoldKey = GlobalKey();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        key: scaffoldKey,
+        drawer: CustomDrawer(),
+        appBar: AppBar(
+          leading: GestureDetector(
+              onTap: (){
+                scaffoldKey.currentState!.openDrawer();
+              },
+              child: Image.asset(AssetsData.slider)),
+          actions: [
+            Image.asset(
+              AssetsData.group,
+              height: 5,
+            ),
+          ],
+          backgroundColor: const Color(0xffFAFAFA),
+          elevation: 0,
+        ),
+        floatingActionButton: FloatingActionButton
+          (
+          onPressed: () {  },
+          backgroundColor: const Color(0xff4CB6BD),
+          child:const Icon(
+            Icons.keyboard_voice_outlined,
+            size: 30,
+            color: Colors.white,
+          ),
+
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+           const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 7.5),
+              child: Text(
+                'Hey Ali,',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w700,
+                  height: 0,
+                ),
+              ),
+            ),
+           const SizedBox(
+              height: 5,
+            ),
+            Row(
+              children:const [
+                Icon(
+                  Icons.toggle_off,
+                  color: Colors.grey,
+                  size: 80,
+                ),
+                Text(
+                  'Start listening',
+                  style: TextStyle(
+                    color: Colors.black38,
+                    fontSize: 14,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w300,
+                    height: 0,
+                  ),
+                ),
+              ],
+            ),
+           const Divider(
+             thickness: 2,
+           ),
+          const MethodItemListview(),
+          const SizedBox(
+            height: 15,
+          ),
+           const DataItemListView(),
+          ],
+
+
+        ),
+      ),
+    );
+
+  }
+}
