@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:sign_talk_app/core/utils/AppRouter.dart';
+
 class CustomButton extends  StatelessWidget {
   final String text;
   const CustomButton({super.key, required this.text});
