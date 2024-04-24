@@ -159,7 +159,7 @@ class SignUpPage extends StatelessWidget {
                                     }
                                     // GoRouter.of(context).push(AppRouter.kSignInPage);
                                   },
-                                  child:  CustomButton(text: 'Continue')),
+                                  child: const CustomButton(text: 'Continue')),
                               const SizedBox(
                                 height: 5,
                               ),

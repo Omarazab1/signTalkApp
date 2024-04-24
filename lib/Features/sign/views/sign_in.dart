@@ -1,13 +1,17 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sign_talk_app/Features/widgets/custom_button.dart';
 import 'package:sign_talk_app/Features/widgets/generator-circle.dart';
+import 'package:sign_talk_app/core/utils/AppRouter.dart';
 import 'dart:ui';
 import 'package:sign_talk_app/core/utils/assets.dart';
 import 'package:sign_talk_app/core/utils/styles.dart';
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+   SignInPage({super.key});
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
@@ -83,6 +87,9 @@ class SignInPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 20.0),
                                TextFormField(
+                                 onChanged: (data){
+                                   email = data;
+                                 },
                                 controller: emailController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Email !' : null,
                                 decoration:const InputDecoration(
@@ -91,6 +98,9 @@ class SignInPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                                TextFormField(
+                                 onChanged: (data){
+                                   password = data;
+                                 },
                                  controller: passwordController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Password !' : null,
                                 obscureText: true,
@@ -108,11 +118,14 @@ class SignInPage extends StatelessWidget {
                                 onTap: (){
 
                                   if(formKey.currentState!.validate()){
-                                    debugPrint('Authenticated');
+                                    GoRouter.of(context).push(AppRouter.kHomeView);
                                   }
-                                 // GoRouter.of(context).push(AppRouter.kHomeView);
+
                                 },
-                                  child: const CustomButton(text: 'Sign In')),
+                                  child:  CustomButton(
+
+                                      text: 'Sign In'
+                                  )),
                               const SizedBox(
                                 height: 5,
                               ),
@@ -151,5 +164,8 @@ class SignInPage extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<void> signInMethod() async {
+    UserCredential user= await FirebaseAuth.instance.signInWithEmailAndPassword(email: email!, password: password!);
   }
 }
