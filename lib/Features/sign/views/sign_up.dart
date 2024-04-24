@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,10 +8,7 @@ import 'dart:ui';
 import 'package:sign_talk_app/core/utils/assets.dart';
 import 'package:sign_talk_app/core/utils/styles.dart';
 class SignUpPage extends StatelessWidget {
-   SignUpPage({super.key});
-  String? email;
-  String? password;
-  String? name;
+  const SignUpPage({super.key});
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
@@ -89,10 +85,6 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 20.0),
                                TextFormField(
-                                 onChanged: (data)
-                                 {
-                                   name = data;
-                                 },
                                  controller:nameController ,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Name !' : null,
                                 decoration:const InputDecoration(
@@ -101,9 +93,6 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
-                                onChanged: (data){
-                                  email = data;
-                                },
                                 controller: emailController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Email !' : null,
                                 decoration:const InputDecoration(
@@ -112,9 +101,6 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
-                                onChanged: (data){
-                                  password = data;
-                                },
                                 controller: passwordController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Password !' : null,
                                 obscureText: true,
@@ -165,22 +151,7 @@ class SignUpPage extends StatelessWidget {
                                   }
                                   // GoRouter.of(context).push(AppRouter.kSignInPage);
                                 },
-                                  child:  CustomButton(
-                                    onTap: () async{
-                                      try {
-                                        var auth = FirebaseAuth.instance;
-                                        UserCredential user =await auth.createUserWithEmailAndPassword(email: email!, password: password!);
-                                      }on FirebaseAuthException catch (ex) {
-                                        if(ex.code == 'weak-password'){
-                                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('weak password')));
-                                        }else if(ex.code == 'email-already-in-use'){
-                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('email Already exists')));
-                                      }};
-                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Success')));
-
-                                    },
-                                      text: 'Continue'
-                                  )),
+                                  child: const CustomButton(text: 'Continue')),
                               const SizedBox(
                                 height: 5,
                               ),
@@ -219,9 +190,6 @@ class SignUpPage extends StatelessWidget {
       ),
     );
   }
-   Future<void> RegisterMethod() async {
-     UserCredential user= await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email!, password: password!);
-   }
 }
 
 

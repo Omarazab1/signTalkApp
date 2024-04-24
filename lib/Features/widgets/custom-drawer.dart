@@ -1,4 +1,4 @@
-import 'dart:js';
+
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,12 +12,9 @@ class CustomDrawer extends StatefulWidget {
 //   BuildContext get context;
   @override
   State<CustomDrawer> createState() => _CustomDrawerState();
-
-
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-
   /*List<DrawerItem> items = [
     DrawerItemModel(
       title: 'My Profile',
@@ -32,21 +29,23 @@ class _CustomDrawerState extends State<CustomDrawer> {
         title: 'Overview', icon: Icons.interests_outlined, onTap: () {}),
   ];*/
 
-  List<DrawerItem> items =
-  [
-   const DrawerItem(title: 'My Profile',
+  List<DrawerItem> items = [
+    const DrawerItem(
+        title: 'My Profile',
         icon: Icons.perm_identity,
         location: AppRouter.kMyProfile),
-   const DrawerItem(title: 'Devices',
+    const DrawerItem(
+        title: 'Devices',
         icon: Icons.device_unknown,
         location: AppRouter.kSearchForDevice),
-    const DrawerItem(title: 'Tutorial',
+    const DrawerItem(
+        title: 'Tutorial',
         icon: Icons.history_edu,
         location: AppRouter.kSearchForDevice),
-    const DrawerItem(title: 'Overview',
+    const DrawerItem(
+        title: 'Overview',
         icon: Icons.interests_outlined,
         location: AppRouter.kSearchForDevice),
-
   ];
   int activeIndex = 0;
 
@@ -56,7 +55,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
       backgroundColor: const Color(0xffDBDBDB),
       child: Column(
         children: [
-          const DrawerHeader(child: Icon(Icons.sign_language, size: 48,)),
+          const DrawerHeader(
+              child: Icon(
+            Icons.sign_language,
+            size: 48,
+          )),
           ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -68,12 +71,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
       ),
     );
   }
-
 }
 
 class DrawerItem extends StatelessWidget {
   const DrawerItem(
-      {super.key, required this.title, required this.icon, required this.location});
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.location});
 
   final String title;
   final IconData icon;
