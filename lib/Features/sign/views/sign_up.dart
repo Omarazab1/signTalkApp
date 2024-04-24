@@ -7,8 +7,10 @@ import 'package:sign_talk_app/core/utils/AppRouter.dart';
 import 'dart:ui';
 import 'package:sign_talk_app/core/utils/assets.dart';
 import 'package:sign_talk_app/core/utils/styles.dart';
+
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
@@ -35,22 +37,22 @@ class SignUpPage extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                 const Positioned(
-                    left: 220,
-                    top: -30,
-                    //generator circle//===============
-                    child: GeneratorCircle(width: 180, height: 180)
-                    //generator circle//===============
-                    /*Image.asset(
+                  const Positioned(
+                      left: 220,
+                      top: -30,
+                      //generator circle//===============
+                      child: GeneratorCircle(width: 180, height: 180)
+                      //generator circle//===============
+                      /*Image.asset(
                       "assets/images/2.PNG",
                     ),*/
-                  ),
-                 const Positioned(
+                      ),
+                  const Positioned(
                     left: 100,
                     top: -30,
                     child: GeneratorCircle(width: 60, height: 60),
                   ),
-                 const Positioned(
+                  const Positioned(
                     left: 30,
                     top: 350,
                     child: GeneratorCircle(width: 120, height: 120),
@@ -79,30 +81,36 @@ class SignUpPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               Text(
+                              Text(
                                 'Sign Up',
                                 style: Styles.style30,
                               ),
                               const SizedBox(height: 20.0),
-                               TextFormField(
-                                 controller:nameController ,
-                                validator: (val) => val!.isEmpty ? 'Please Enter Your Name !' : null,
-                                decoration:const InputDecoration(
+                              TextFormField(
+                                controller: nameController,
+                                validator: (val) => val!.isEmpty
+                                    ? 'Please Enter Your Name !'
+                                    : null,
+                                decoration: const InputDecoration(
                                   labelText: 'Full Name',
                                 ),
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
                                 controller: emailController,
-                                validator: (val) => val!.isEmpty ? 'Please Enter Your Email !' : null,
-                                decoration:const InputDecoration(
+                                validator: (val) => val!.isEmpty
+                                    ? 'Please Enter Your Email !'
+                                    : null,
+                                decoration: const InputDecoration(
                                   labelText: 'E-mail or Mobile Number',
                                 ),
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
                                 controller: passwordController,
-                                validator: (val) => val!.isEmpty ? 'Please Enter Your Password !' : null,
+                                validator: (val) => val!.isEmpty
+                                    ? 'Please Enter Your Password !'
+                                    : null,
                                 obscureText: true,
                                 decoration: const InputDecoration(
                                   labelText: 'Password',
@@ -114,7 +122,8 @@ class SignUpPage extends StatelessWidget {
                                 TextSpan(
                                   children: [
                                     const TextSpan(
-                                      text: "By Signing up, You’re agree to our ",
+                                      text:
+                                          "By Signing up, You’re agree to our ",
                                     ),
                                     TextSpan(
                                       style: const TextStyle(
@@ -144,21 +153,20 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 20.0),
                               GestureDetector(
-                                onTap: (){
-                                  if(formKey.currentState!.validate())
-                                  {
-                                     debugPrint('Auth !');
-                                  }
-                                  // GoRouter.of(context).push(AppRouter.kSignInPage);
-                                },
+                                  onTap: () {
+                                    if (formKey.currentState!.validate()) {
+                                      debugPrint('Auth !');
+                                    }
+                                    // GoRouter.of(context).push(AppRouter.kSignInPage);
+                                  },
                                   child: const CustomButton(text: 'Continue')),
                               const SizedBox(
                                 height: 5,
                               ),
-                               Row(
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                   Text(
+                                  Text(
                                     'Joined Us Before ?',
                                     style: Styles.style10,
                                   ),
@@ -166,8 +174,9 @@ class SignUpPage extends StatelessWidget {
                                     width: 3,
                                   ),
                                   GestureDetector(
-                                    onTap: (){
-                                      GoRouter.of(context).push(AppRouter.kSignInPage);
+                                    onTap: () {
+                                      GoRouter.of(context)
+                                          .push(AppRouter.kSignInPage);
                                     },
                                     child: Text(
                                       'Sign In',
@@ -191,9 +200,3 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

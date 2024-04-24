@@ -47,13 +47,13 @@ class _HomeViewState extends State<HomeView> {
           ),
 
         ),
-        body: Column(
+        body: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           const Padding(
+           Padding(
               padding: EdgeInsets.symmetric(horizontal: 7.5),
               child: Text(
-                'Hey Ali,',
+                'Hey Mohamed,',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 40,
@@ -63,11 +63,11 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-           const SizedBox(
+           SizedBox(
               height: 5,
             ),
             Row(
-              children:const [
+              children:[
                 Icon(
                   Icons.toggle_off,
                   color: Colors.grey,
@@ -85,14 +85,14 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-           const Divider(
+           Divider(
              thickness: 2,
            ),
-          const MethodItemListview(),
-          const SizedBox(
+          MethodItemListview(),
+          SizedBox(
             height: 15,
           ),
-           const DataItemListView(),
+           DataItemListView(),
           ],
 
 
