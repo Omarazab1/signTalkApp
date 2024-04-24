@@ -87,6 +87,9 @@ class SignInPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 20.0),
                                TextFormField(
+                                 onChanged: (data){
+                                   email = data;
+                                 },
                                 controller: emailController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Email !' : null,
                                 decoration:const InputDecoration(
@@ -95,6 +98,9 @@ class SignInPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                                TextFormField(
+                                 onChanged: (data){
+                                   password = data;
+                                 },
                                  controller: passwordController,
                                 validator: (val) => val!.isEmpty ? 'Please Enter Your Password !' : null,
                                 obscureText: true,
@@ -116,7 +122,10 @@ class SignInPage extends StatelessWidget {
                                   }
 
                                 },
-                                  child:  CustomButton(text: 'Sign In')),
+                                  child:  CustomButton(
+
+                                      text: 'Sign In'
+                                  )),
                               const SizedBox(
                                 height: 5,
                               ),
