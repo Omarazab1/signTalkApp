@@ -22,12 +22,12 @@ abstract class AppRouter
     routes: <RouteBase>[
       GoRoute(
         path: kSignInPage,
-        builder: (BuildContext context, GoRouterState state) => const SignInPage(),
+        builder: (BuildContext context, GoRouterState state) =>  SignInPage(),
 
       ),
       GoRoute(
          path: kSignUpPage,
-          builder: (BuildContext context, GoRouterState state)=> const SignUpPage(),
+          builder: (BuildContext context, GoRouterState state)=>  SignUpPage(),
       ),
       GoRoute(
         path: '/',
