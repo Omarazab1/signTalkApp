@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
         body:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           Padding(
+         const  Padding(
               padding: EdgeInsets.symmetric(horizontal: 7.5),
               child: Text(
                 'Hey Mohamed,',
@@ -63,11 +63,11 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-           SizedBox(
+          const SizedBox(
               height: 5,
             ),
             Row(
-              children:[
+              children:const[
                 Icon(
                   Icons.toggle_off,
                   color: Colors.grey,
@@ -85,14 +85,14 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-           Divider(
+            const  Divider(
              thickness: 2,
            ),
-          MethodItemListview(),
-          SizedBox(
+            const  MethodItemListview(),
+            const SizedBox(
             height: 15,
           ),
-           DataItemListView(),
+            const  DataItemListView(),
           ],
 
 
