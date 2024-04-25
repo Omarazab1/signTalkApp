@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,8 +10,11 @@ import 'package:sign_talk_app/core/utils/assets.dart';
 import 'package:sign_talk_app/core/utils/styles.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+   SignUpPage({super.key});
 
+
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
@@ -97,6 +101,9 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
+                                onChanged: (data){
+                                  email = data;
+                                },
                                 controller: emailController,
                                 validator: (val) => val!.isEmpty
                                     ? 'Please Enter Your Email !'
@@ -107,6 +114,9 @@ class SignUpPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10.0),
                               TextFormField(
+                                onChanged: (data){
+                                  password = data;
+                                },
                                 controller: passwordController,
                                 validator: (val) => val!.isEmpty
                                     ? 'Please Enter Your Password !'
@@ -155,11 +165,25 @@ class SignUpPage extends StatelessWidget {
                               GestureDetector(
                                   onTap: () {
                                     if (formKey.currentState!.validate()) {
-                                      debugPrint('Auth !');
+                                    //  GoRouter.of(context).push(AppRouter.kHomeView);
                                     }
-                                    // GoRouter.of(context).push(AppRouter.kSignInPage);
+
                                   },
-                                  child: const CustomButton(text: 'Continue')),
+                                  child:  CustomButton(
+                                      onTap: () async{
+                                        try {
+                                          UserCredential user= await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                              email: email!, password: password!);
+                                        } on FirebaseAuthException catch (ex) {
+                                          if(ex.code == 'weak-password'){
+                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('weak password')));
+                                          }else if(ex.code == 'email-already-in-use'){
+                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('email already exists ')));
+                                          }};
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Success ')));
+                                      },
+                                      text: 'Continue')),
+
                               const SizedBox(
                                 height: 5,
                               ),
