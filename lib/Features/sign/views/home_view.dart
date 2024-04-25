@@ -47,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
           ),
 
         ),
-        body: const Column(
+        body:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
            Padding(
